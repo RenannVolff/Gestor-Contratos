@@ -45,7 +45,7 @@ try {
     $mail->SMTPAuth   = true;
 
     $mail->Username   = 'engs-renannvolff@camporeal.edu.br';
-    $mail->Password   = 'xsmtpsib-87abe89280243765182c38f5459b1901aeb237a969154e47118e0c0c5f522938-KtY3H8wxyU5VSbrT';
+    $mail->Password   = '';
     // --------------------------------------------------
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;

@@ -1,53 +1,255 @@
- 
-body{ 
-    font-family: sans-serif; 
-    background-color: #f4f4f9; 
-    color: #333; 
+/* Reset Básico e Fontes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{ 
-    max-width: 1000px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    background: #fff; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  color: #333;
 }
 
-form{ 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 10px; 
-    margin-bottom: 20px;
+/* --- Layout Principal --- */
+.sidebar {
+  width: 250px;
+  background-color: #0d2d52; /* Azul escuro da imagem */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
 }
 
-input, button{ 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
+.main-content {
+  margin-left: 250px;
+  flex-grow: 1;
+  padding: 20px;
 }
 
-button{ 
-    background-color: #007bff; 
-    color: white; cursor: pointer; 
-    border: none; 
+/* --- Sidebar --- */
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #1a4a82;
 }
 
-table{ 
-    width: 100%; 
-    border-collapse: collapse; 
+.sidebar nav ul {
+  list-style: none;
 }
 
-th, td{ 
-    padding: 12px; 
-    border-bottom: 
-    1px solid #ddd; 
-    text-align: left; }
-
-th{ 
-    background-color: #f2f2f2; 
+.sidebar nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: #a9b7c9;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-a{ 
-    color: #007bff; 
-    text-decoration: none; 
+.sidebar nav ul li a i {
+  margin-right: 10px;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+  background-color: #1a4a82;
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #1a4a82;
+}
+.sidebar-footer a {
+  display: block;
+  padding: 15px 20px;
+  color: #a9b7c9;
+  text-decoration: none;
+}
+
+/* --- Conteúdo Principal --- */
+header h1 {
+  color: #0d2d52;
+  margin-bottom: 20px;
+}
+
+.content-body {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+h2 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* --- Formulário --- */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+#mensagem {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* --- Tabela --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* --- Botões de Ação na Tabela --- */
+.action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+  color: #555;
+  transition: color 0.3s;
+}
+.btn-edit {
+  color: #007bff;
+}
+.btn-edit:hover {
+  color: #0056b3;
+}
+.btn-delete {
+  color: #dc3545;
+}
+.btn-delete:hover {
+  color: #a71d2a;
+}
+
+/* --- Modal (ainda não implementado) --- */
+.modal {
+  display: none; /* ... mais estilos virão aqui ... */
+}
+/* --- Estilos do Modal --- */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 8px;
+  position: relative;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* --- Formulário de Edição dentro do Modal --- */
+#form-editar-contrato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%; /* Ocupa ~metade da largura */
+}
+.form-group.full-width {
+  flex: 1 1 100%; /* Ocupa a largura total */
+}
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+.form-group input,
+.form-group small {
+  width: 100%;
+}
+.form-group small {
+  color: #777;
+  margin-top: 5px;
+}
+#edit-mensagem {
+  margin-top: 15px;
+  font-weight: bold;
 }
