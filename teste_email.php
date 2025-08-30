@@ -15,7 +15,7 @@ try {
     $mail->Host       = 'smtp-relay.brevo.com';
     $mail->SMTPAuth   = true;
     $mail->Username   = 'engs-renannvolff@camporeal.edu.br';
-    $mail->Password   = 'xsmtpsib-87abe89280243765182c38f5459b1901aeb237a969154e47118e0c0c5f522938-KtY3H8wxyU5VSbrT';        // <-- SUA SENHA SMTP AQUI
+    $mail->Password   = '';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
     $mail->CharSet    = 'UTF-8';
