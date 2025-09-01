@@ -1,20 +1,28 @@
 <?php
+// /api/contratos/listar.php
 require_once '../config.php';
 
 try {
+    // A consulta agora é muito mais simples, sem JOINs.
     $stmt = $pdo->query("
         SELECT 
-            c.id, c.numero_contrato, c.data_inicio, c.data_vencimento, c.valor_mensal, c.caminho_anexo_pdf,
-            e.nome_fantasia AS entidade_nome,
-            s.nome_solucao AS solucao_nome
-        FROM contratos c
-        JOIN entidades e ON c.entidade_id = e.id
-        JOIN solucoes s ON c.solucao_id = s.id
-        ORDER BY c.data_vencimento ASC
+            id, 
+            numero_contrato, 
+            entidade_nome,       -- Nova coluna
+            solucao_nome,        -- Nova coluna
+            data_inicio, 
+            data_vencimento, 
+            valor_mensal, 
+            caminho_anexo_pdf
+        FROM contratos
+        ORDER BY data_vencimento ASC
     ");
 
     $contratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
+    // O JavaScript já espera 'entidade_nome' e 'solucao_nome', então não precisa mudar nada lá.
+    // Apenas renomeamos as colunas no SELECT para manter a compatibilidade.
+    // Na verdade, como a coluna agora tem o nome correto, podemos remover os apelidos `AS`.
     echo json_encode($contratos);
 
 } catch(PDOException $e) {
